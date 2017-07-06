@@ -1,10 +1,6 @@
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
-Untuk menambahkan paket/package express dalam folder lakukan dengan perintah:
-
-npm install --save express
-
 
 - Release 0
 Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
