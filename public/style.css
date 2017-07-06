@@ -1,5 +1,4 @@
 body {
   color: yellow;
-  background-image: url('https://lifeandthyme.com/wp-content/uploads/2015/02/mason-jar-cafe-20.jpg');
-  /*  background-image: '/mason-jar-cafe-20.jpg';  */
+  background-image: url('/mason-jar-cafe-20.jpg');
 }
