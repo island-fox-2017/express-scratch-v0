@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ABOUT</title>
+  </head>
+  <link rel="stylesheet" href="/contoh.css">
+  <link rel="stylesheet" href="/sesuatu.css">
+
+  <body>
+    <div class="title">
+      <% for(var i=0;i< message1.users.length; i++){%>
+      <br>user name = <%= message1.users[i].username %></br>
+      <br>password = <%= message1.users[i].password %></br>
+      <br>email = <%= message1.users[i].email %> </br>
+      <% } %>
+    </div>
+  </body>
+</html>
