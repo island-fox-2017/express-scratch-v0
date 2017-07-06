@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>cities</title>
+  </head>
+  <body>
+    <table border = "1">
+      <tr>
+      <th>Name</th>
+      <th>Province</th>
+    </th>
+    <% for (let i = 0 ; i < data_cities.cities.length ; i++){%>
+    <tr>
+    <td><%= data_cities.cities[i].name %></td>
+    <td><%= data_cities.cities[i].province %></td>
+    </tr>
+    <% } %>
+  </table>
+  <a href="/">back to main page</a>
+  </body>
+</html>
