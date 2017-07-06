@@ -30,6 +30,9 @@ app.set("view engine", "ejs");
 app.get('/user', function(req, res){
   res.render("user", {datauser : parse})
 })
+app.get('/cities', function(req, res){
+  res.render("cities", {datauser : parse})
+})
 // app.get('/cities', function(req, res){
 //   res.render("cities", {datacities : parse})
 // })
