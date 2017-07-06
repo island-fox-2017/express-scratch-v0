@@ -1,5 +1,4 @@
 # express-scratch-v0
- EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
 Untuk menambahkan paket/package express dalam folder lakukan dengan perintah:
