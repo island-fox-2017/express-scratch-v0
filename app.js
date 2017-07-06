@@ -66,17 +66,13 @@ app.get('/', function(req, res) {
 app.get('/users', function(req, res) {
   let readUserData = fs.readFileSync('data.json', 'utf8')
   let usersObj = JSON.parse(readUserData)
-  let usersObj1 = JSON.stringify(usersObj.users[0])
-  let usersObj2 = JSON.stringify(usersObj.users[1])
-  res.render('users', {userdata1: usersObj1, userdata2: usersObj2})
+  res.render('users', {userdata: usersObj})
 })
 
 app.get('/cities', function(req, res) {
   let readCityData = fs.readFileSync('data.json', 'utf8')
   let citiesObj = JSON.parse(readCityData)
-  let citiesObj1 = JSON.stringify(citiesObj.users[0])
-  let citiesObj2 = JSON.stringify(citiesObj.users[1])
-  res.render('cities', {citydata1: citiesObj1, citydata2: citiesObj2})
+  res.render('cities', {citydata: citiesObj})
 })
 
 app.listen(3000);
