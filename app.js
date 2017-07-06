@@ -46,13 +46,28 @@ sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ej
 **/
 
 // ----------------------------------------------
-
+// constanta
 const express = require('express');
 const app = express();
+const fs = require("fs");
+const path = require('path');
 
+// view engine = ejs
+app.set('view engine', 'ejs');
+
+// static
+app.use(express.static(path.join(__dirname, 'public')));
+
+//import data JSON
+// let data = fs.readFileSync('data.json', 'utf-8');
+let data = JSON.parse(fs.readFileSync('data.json', 'utf-8'));
+// let data = JSON.parse(fs.readFileSync('../public/data.json', 'utf-8'));
+
+// routing
 
 app.get('/', function(req, res) {
-  res.send('Welcome to Express My App [Ahmad Fajar]');
+  // res.send('Welcome to Express My App [Ahmad Fajar]');
+  res.render('index')
 });
 
 app.get('/users', function(req, res) {
@@ -63,8 +78,14 @@ app.get('/users', function(req, res) {
 
 app.get('/cities', function(req, res) {
   let objKota = {kota: 'Jakarta'};
-  res.send(objKota)
+  res.send(objKota);
 });
+
+app.get('/user-city', function(req, res) {
+  res.render('usercity', {data});
+})
+
+
 
 
 app.listen(3000);
