@@ -1,6 +1,17 @@
-<div> username: <%= data[0].username %> password:  <%= data[0].password %> email: <%= data[0].email %></div>
-<div> username: <%= data[1].username %> password:  <%= data[1].password %> email: <%= data[1].email %></div>
-
+<table border="1">
+  <tr>
+    <td>username</td>
+    <td>password</td>
+    <td>email</td>
+  </tr>
+<% for ( var i = 0; i < data.length; i++) {%>
+  <tr>
+    <td><%= data[i].username %></td>
+    <td><%= data[i].password %></td>
+    <td><%= data[i].email %></td>
+  </tr>
+<%}%>
+</table>
 
 <!-- <script>
 var dataObj = <%= data %>
