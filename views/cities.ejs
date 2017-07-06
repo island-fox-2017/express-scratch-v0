@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cities Page</title>
+  </head>
+  <body>
+    <h1>Halo City Page</h1>
+    <div>
+    <table border = "1">
+      <tr>
+        <td>Name</td>
+        <td>Province</td>
+      </tr>
+      <%for(let i = 0; i < citydata.cities.length; i++){%>
+        <tr>
+          <td><%=citydata.cities[i].name%></td>
+          <td><%=citydata.cities[i].province%></td>
+        </tr>
+      <%}%>
+    </table>
+    </div>
+  </body>
+</html>

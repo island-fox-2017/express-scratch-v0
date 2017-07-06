@@ -1,3 +1,35 @@
+/*
+============= RELEASE 0 =============
+var express = require('express');
+
+var app = express();
+
+app.get('/', function(req, res) {
+  res.send('Welcome to Express My App [Budhi Priyatmojo]')
+})
+
+app.get('/users', function(req, res) {
+  var userObj = {
+    nama : 'Anto',
+    jenis_kelamin : 'Laki-laki',
+    pekerjaan : 'Koki'
+  }
+  res.send({pesan: userObj})
+})
+
+app.get('/cities', function(req, res) {
+  var cityObj = {
+    nama_kota : 'Bogor',
+    provinsi : 'Jawa Barat',
+    pulau : 'Jawa'
+  }
+  res.send({pesan: cityObj})
+})
+
+app.listen(3000)
+*/
+
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
@@ -15,8 +47,37 @@ silakan menentukan property dan value dari object tersebut asalkan relevan denga
 URL --> http://localhost:3000/cities
 menampilkan data cities berupa object.
 silakan menentukan property dan value dari object cities juga untuk release 0 ini.
+*/
 
+var express = require ('express')
+var path = require ('path')
+var fs = require ('fs')
 
+var app = express();
+
+app.set('view engine', 'ejs')
+
+app.use(express.static(path.join(__dirname,'public')))
+
+app.get('/', function(req, res) {
+  res.send('Welcome to Express My App [Budhi Priyatmojo]')
+})
+
+app.get('/users', function(req, res) {
+  let readUserData = fs.readFileSync('data.json', 'utf8')
+  let usersObj = JSON.parse(readUserData)
+  res.render('users', {userdata: usersObj})
+})
+
+app.get('/cities', function(req, res) {
+  let readCityData = fs.readFileSync('data.json', 'utf8')
+  let citiesObj = JSON.parse(readCityData)
+  res.render('cities', {citydata: citiesObj})
+})
+
+app.listen(3000);
+
+/*
 - Release 1
 Buatlah file data.json yang isinya ada 2 object yaitu users dan cities.
 contoh :

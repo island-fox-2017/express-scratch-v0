@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Page</title>
+  </head>
+  <body>
+    <h1>Halo Users Page</h1>
+    <div>
+      <table border = "1">
+        <tr>
+          <td>Username</td>
+          <td>password</td>
+          <td>Email</td>
+        </tr>
+        <%for(let i = 0; i < userdata.users.length; i++){%>
+          <tr>
+            <td><%=userdata.users[i].username%></td>
+            <td><%=userdata.users[i].password%></td>
+            <td><%=userdata.users[i].email%></td>
+          </tr>
+        <%}%>
+      </table>
+    </div>
+  </body>
+</html>
