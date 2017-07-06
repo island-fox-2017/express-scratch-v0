@@ -11,7 +11,7 @@ npm install --save express
 Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
 
 URL --> http://localhost:3000/
-Menampilkan "Welcome to Express My App [Nama_Kalian]"
+menampilkan "Welcome to Express My App [Nama_Kalian]"
 
 URL --> http://localhost:3000/users
 menampilkan data users berupa object. di release ini object dibuat manual,
