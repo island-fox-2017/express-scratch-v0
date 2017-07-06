@@ -1,3 +1,64 @@
+'use strict'
+
+const express = require('express')
+const app = express()
+const fs = require ('fs')
+var path = require('path');
+
+
+
+app.set('view engine', 'ejs');
+
+var path_name = path.join(__dirname, 'public')
+var express_static = express.static(path_name)
+app.use(express_static);
+
+
+// app.get('/',function (req,res){
+//   res.send("Welcome to Express My App [aridwia]");
+// })
+//
+// app.get('/users',function (req,res){
+//
+// res.send('{users: ari,city: bandung},{users2: dwi,city: jakarta}')
+//   res.render('/users')
+// })
+//
+// app.get('/cities',function (req,res){
+//   res.send('{cities : bandung},{cities : jakarta}')
+//   res.render('/cities');
+// })
+//
+//
+// app.listen(3010)
+
+////// batas release 0
+
+app.get('/',function(req,res){
+  res.render('main')
+})
+
+app.get('/users', function(req, res){
+  let data = fs.readFileSync('data.json','utf8')
+  let obj =  JSON.parse(data)
+
+  res.render('users',{message1 : obj})
+})
+
+app.get('/cities', function(req, res){
+  let data = fs.readFileSync('data.json','utf8')
+  let obj =  JSON.parse(data)
+
+  res.render('cities',{message2 : obj})
+})
+
+
+app.listen(3010)
+
+
+
+
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
