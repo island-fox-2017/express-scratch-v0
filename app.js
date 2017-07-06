@@ -43,3 +43,48 @@ Setelah itu, buatlah code untuk membaca file dari data.json
 sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
 sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
 **/
+
+'use strict'
+var express = require('express')
+var app = express()
+var ejs = require('ejs')
+app.listen(3000)
+app.set('view engine', 'ejs')
+
+
+//-- RELEASE 0
+//--
+// app.get('/', function(req, res) {
+//   res.send('Welcome to Express My App Irianto')
+// })
+//
+// app.get('/users', function(req, res) {
+//
+//   var usersObj = {username : 'anto', password : 'rahasia'}
+//   res.send(usersObj)
+// })
+//
+// app.get('/cities', function(req, res) {
+//
+//   var citiesObj = {name : 'Jakarta', province : 'DKI Jakarta'}
+//   res.send(citiesObj)
+// })
+
+
+// --RELEASE 1
+// --
+const fs = require('fs')
+var dataJson = fs.readFileSync('data.json', 'utf8')
+var data = JSON.parse(dataJson)
+
+app.get('/', function(req, res) {
+  res.render('welcome', {namaSaya : 'Irianto'})
+})
+
+app.get('/users', function(req, res) {
+  res.render('users', {dataUser : JSON.stringify(data.users)})
+})
+
+app.get('/cities', function(req, res) {
+  res.render('cities', {dataCity : JSON.stringify(data.cities)})
+})
