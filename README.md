@@ -8,13 +8,16 @@ npm install --save express
 
 
 - Release 0
-Buatlah 2 routing yang memenuhi spesifikasi berikut ini :
+Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
 
-URL --> http:localhost:3000/users
-menampilkan data users berupa object. di release ini object dibuat manual, 
+URL --> http://localhost:3000/
+Menampilkan "Welcome to Express My App [Nama_Kalian]"
+
+URL --> http://localhost:3000/users
+menampilkan data users berupa object. di release ini object dibuat manual,
 silakan menentukan property dan value dari object tersebut asalkan relevan dengan user
 
-URL --> http:localhost:3000/cities
+URL --> http://localhost:3000/cities
 menampilkan data cities berupa object.
 silakan menentukan property dan value dari object cities juga untuk release 0 ini.
 
@@ -44,4 +47,3 @@ contoh :
 Setelah itu, buatlah code untuk membaca file dari data.json
 sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
 sekarang menampilkan data yang ada di-file data.json.
-
