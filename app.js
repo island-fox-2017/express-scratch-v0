@@ -45,5 +45,5 @@ contoh :
 
 Setelah itu, buatlah code untuk membaca file dari data.json
 sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
-sekarang menampilkan data yang ada di-file data.json.
+sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
 **/
