@@ -1,6 +1,32 @@
+const express = require('express')
+var app = express()
+
+app.get('/', function(req, res){
+  res.send('Welcome to Express My App PDVega')
+})
+
+app.get('/users', function(req, res){
+  var objUser = {
+    user : 'pdvega',
+    email : 'pdvegaa@gmail.com'
+  }
+  res.send(`${JSON.stringify(objUser, null, 2)}`) //Release 0
+})
+
+app.get('/cities', function(req, res){
+  var objCity = {
+    name : 'Bekasi',
+    province : 'Jawa Barat'
+  }
+  res.send(`${JSON.stringify(objCity, null, 2)}`)
+})
+
+app.listen(3000)
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
+
 
 - Release 0
 Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
