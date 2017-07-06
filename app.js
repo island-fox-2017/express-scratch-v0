@@ -1,3 +1,74 @@
+const express = require('express');
+const app = express();
+
+const fs = require('fs')
+
+let text = fs.readFileSync('./data.json', 'utf8');
+let data = JSON.parse(text)
+// console.log(data.users[0])
+
+app.set('view engine', 'ejs');
+
+// RELEASE 0
+app.get('/', function(req, res) {
+  res.send("Welcome to Express My App Fickry Bil Iman")
+})
+
+// app.get('/users', function(req, res) {
+//   let userList =  { username: 'fickry',
+//                     password: 'biliman',
+//                     email: 'fickry.bil.iman@gmail.com',
+//                     phone: '08123456789'
+//                   };                      
+//   res.send({userList})
+// })
+// 
+// app.get('/cities', function(req,res) {
+//   let cities = {  name: 'Bandung',
+//                   province: 'Jawa Barat',
+//                   suhu: 'Dingin',
+//                   cewek: 'Geulieus'
+//                 }
+//   res.send({cities})        
+// })
+
+// RELEASE 1
+app.get('/users', function(req, res) {
+  res.render('usersView', {viewUsers} )
+})
+
+app.get('/cities', function(req, res) {
+  res.render('citiesView', {viewCities})
+})
+
+app.listen(3000)
+
+function viewUsers() {
+  let arrUsers = [];
+  let parsing = data.users;
+  for (let i = 0; i < parsing.length; i++) {
+    arrUsers.push(parsing[i].username)
+    arrUsers.push(parsing[i].password)
+    arrUsers.push(parsing[i].email)
+  }
+  return arrUsers
+}
+// console.log(viewUsers());
+
+function viewCities() {
+  let arrCities = [];
+  let parsing = data.cities;
+  for (let i = 0; i < parsing.length; i++) {
+    arrCities.push(parsing[i].name)
+    arrCities.push(parsing[i].province)
+  }
+  return arrCities
+}
+// console.log(viewCities());
+
+
+
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
