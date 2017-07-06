@@ -1,3 +1,75 @@
+var express = require('express')
+var path = require('path');
+var app = express()
+app.set('view engine', 'ejs');
+
+var path_name = path.join(__dirname, 'public')
+var express_static = express.static(path_name)
+app.use(express_static);
+
+//------------------- data json
+
+let fs = require('fs');
+let data = JSON.parse(fs.readFileSync('./data.json','utf8'))
+// console.log(data)
+// console.log('....',data.users);
+// console.log('aaaa',data.users[0]);
+// console.log('xxxx',data.users[0].username);
+
+
+// R 0 -- in HERE
+//ROUTE
+//
+app.get('/', function(req, res){
+  res.send("Welcome to Express My App Kokoh Tanamal")
+})
+
+// var user = {
+//   message1: "Halo",
+//   message2: "I am User"
+// }
+//
+// app.get('/users', function(req, res){
+//   res.send(user)
+//   // ngirim variable
+// })
+//
+// var cities = {
+//   pesan1: "Halo",
+//   pesan2: "Jakarta"
+// }
+//
+// app.get('/cities', function(req, res){
+//   res.send(cities)
+  // ngirim variable
+// })
+
+//----------------------------------------------------
+// R 1
+// utk akses keseluruhan
+app.get('/users', function(req,res){
+  let data = JSON.parse(fs.readFileSync('./data.json','utf8'))
+//console.log('bbb',data);
+  res.render('viewrsatu',{dataJSON:JSON.stringify(data.users,null,2)})
+})
+
+app.get('/cities', function(req,res){
+  let data = JSON.parse(fs.readFileSync('./data.json','utf8'))
+//console.log('bbb',data);
+  res.render('viewrsatu',{dataJSON:JSON.stringify(data.cities,null,2)})
+})
+
+// utk akses satu per satu !!
+// app.get('/cities', function(req,res){
+//   let data = JSON.parse(fs.readFileSync('./data.json','utf8'))
+// console.log('bbb',data);
+//   res.render('viewrsatusatu',{dataJSON:data})
+// })
+
+app.listen(3000)
+
+//========================================================================================
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
