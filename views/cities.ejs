@@ -1,0 +1,14 @@
+<center>
+<h2>List All Citie</h2>
+<h3><a href="../">Back</a></h3>
+  <table>
+    <tr><td width='100'><b>City Name</b></td><td width='100'><b>Province</b></td></tr>
+    <% var i = 0 %>
+    <% while(i < cities_list.cities.length){ %>
+    <tr>
+      <td><%= cities_list.cities[i].name %></td>
+      <td><%= cities_list.cities[i].province %></td>
+    </tr>
+    <% i++ }%>
+  </table>
+</center>
