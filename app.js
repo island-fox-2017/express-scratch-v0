@@ -1,45 +1,81 @@
-/** EXPRESS FROM SCRATCH V.0
----------------------------
-Buatlah sebuah aplikasi sederhana menggunakan Express JS
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
-- Release 0
-Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
+const app = express();
 
-URL --> http://localhost:3000/
-menampilkan "Welcome to Express My App [Nama_Kalian]"
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')))
 
-URL --> http://localhost:3000/users
-menampilkan data users berupa object. di release ini object dibuat manual,
-silakan menentukan property dan value dari object tersebut asalkan relevan dengan user
+app.get('/', function(req, res) {
+  // res.send('Welcome to Express My App: Adith');
+  res.render('home');
+});
 
-URL --> http://localhost:3000/cities
-menampilkan data cities berupa object.
-silakan menentukan property dan value dari object cities juga untuk release 0 ini.
+app.get('/users', function(req, res) {
+  let obj = objUsers();
+  res.render('users', {data : obj});
+  // res.send(userObj);
+});
+
+app.get('/cities', function(req, res) {
+  let obj = objCities();
+  res.render('cities', {data : obj});
+});
+
+app.listen(3000);
+
+/*---======PARSING CODE======---*/
+
+let parsingData = (file) => {
+  let objParsed = JSON.parse(fs.readFileSync(file, 'utf-8'));
+  return objParsed;
+};
+
+let objUsers = () => {
+  let object = parsingData('data.json');
+  let arrObjUsers = [];
+  for (let i = 0; i < object.users.length; i++) {
+    arrObjUsers.push(object.users[i]);
+  }
+  return arrObjUsers;
+};
+
+let objCities = () => {
+  let object = parsingData('data.json');
+  let arrObjCities = [];
+  for (let i = 0; i < object.cities.length; i++) {
+    arrObjCities.push(object.cities[i]);
+  }
+  return arrObjCities;
+};
+/*---======0000000000000======---*/
 
 
-- Release 1
-Buatlah file data.json yang isinya ada 2 object yaitu users dan cities.
-contoh :
-{
-  users: [{
-    username: 'hacktiv8',
-    password: 'hacktiv8',
-    email: 'hactiv8@hacktiv8.com'
-  }, {
-    username: 'johndoe',
-    password: '12345',
-    email: 'john@doe.com'
-  }],
-  cities: [{
-    name: 'Jakarta'
-    province: 'DKI Jakarta'
-  }, {
-    name: 'Bandung'
-    province: 'Jawa Barat'
-  }]
-}
 
-Setelah itu, buatlah code untuk membaca file dari data.json
-sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
-sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
-**/
+//RELEASE 0
+// app.get('/', function(req, res) {
+//   res.send('Welcome to Express My App: Adith');
+// });
+// 
+// app.get('/users', function(req, res) {
+//   var userObj = {
+//     nama : 'Adith',
+//     warna_kulit : 'cokelat',
+//     warna_rambut : 'hitam',
+//     warna_mata : 'hitam'
+//   };
+//   res.send(`${userObj.nama} memiliki warna kulit ${userObj.warna_kulit}, warna rambut ${userObj.warna_rambut}, dan warna mata ${userObj.warna_mata}.`);
+//   // res.send(userObj);
+// });
+// 
+// app.get('/cities', function(req, res) {
+//   var cityObj = {
+//     nama_kota : 'Salatiga',
+//     provinsi : 'Jawa Tengah',
+//     negara : 'Indonesia'
+//   }
+//   res.send(`Adith lahir di kota ${cityObj.nama_kota}, provinsi ${cityObj.provinsi}, ${cityObj.negara}.`);
+// });
+// 
+// app.listen(3000);

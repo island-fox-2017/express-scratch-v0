@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users Data</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Email</th>
+      </tr>
+      
+        <% for (let i = 0; i < data.length; i++) { %>
+        <tr>
+          <td> <%= data[i].username %> </td>
+          <td> <%= data[i].password %> </td>
+          <td> <%= data[i].email %> </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/cities">Go to Cities Detail</a>
+    <a href="/">Go home</a>
+  </body>
+</html>
