@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>users</title>
+  </head>
+  <body>
+    <p>Users - Username</p>
+    <ul>
+      <% data.users.forEach(function(item){ %>
+        <li><%= item.username%></li>
+      <% }) %>
+            
+    </ul>
+    
+    <p>Users - Email</p>
+    <ul>
+      <% data.users.forEach(function(item){ %>
+        <li><%= item.email%></li>
+      <% }) %>
+            
+    </ul>
+  </body>
+</html>
