@@ -1,45 +1,40 @@
-/** EXPRESS FROM SCRATCH V.0
----------------------------
-Buatlah sebuah aplikasi sederhana menggunakan Express JS
+//ini adalah cara require express nya
+var express = require('express')
 
-- Release 0
-Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
+//biar bisa akses folder project
+var path = require('path');
 
-URL --> http://localhost:3000/
-menampilkan "Welcome to Express My App [Nama_Kalian]"
+//ini cara intiate-nya
+var app = express()
 
-URL --> http://localhost:3000/users
-menampilkan data users berupa object. di release ini object dibuat manual,
-silakan menentukan property dan value dari object tersebut asalkan relevan dengan user
+//ini untuk setup view engine
+app.set('view engine', 'ejs');
 
-URL --> http://localhost:3000/cities
-menampilkan data cities berupa object.
-silakan menentukan property dan value dari object cities juga untuk release 0 ini.
+//panggil fs
+var fs = require('fs');
+//panggil file
+let data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
+
+//ini untuk setup public folder
+var path_name = path.join(__dirname, 'public')
+var express_static = express.static(path_name)
+app.use(express_static);
+
+app.get('/', function(req, res){
+  res.send('<br><center><h1>Welcome to My Express App</h1><h3>by Achim Baggins</h3><br><a href="/users">Show all Users</a> &nbsp; <a href="/cities">Show all Cities</a></center>')
+  // res.send('Achim Baggins')
+})
 
 
-- Release 1
-Buatlah file data.json yang isinya ada 2 object yaitu users dan cities.
-contoh :
-{
-  users: [{
-    username: 'hacktiv8',
-    password: 'hacktiv8',
-    email: 'hactiv8@hacktiv8.com'
-  }, {
-    username: 'johndoe',
-    password: '12345',
-    email: 'john@doe.com'
-  }],
-  cities: [{
-    name: 'Jakarta'
-    province: 'DKI Jakarta'
-  }, {
-    name: 'Bandung'
-    province: 'Jawa Barat'
-  }]
-}
 
-Setelah itu, buatlah code untuk membaca file dari data.json
-sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
-sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
-**/
+//ini routing
+app.get('/users', function(req, res){
+
+  res.render('users',{users_list: data})
+})
+
+app.get('/cities', function(req, res){
+  res.render('cities',{cities_list: data})
+})
+
+app.listen(3000)

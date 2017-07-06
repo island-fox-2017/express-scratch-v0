@@ -1,0 +1,19 @@
+<center>
+<h2>List All User</h2>
+<h3><a href="../">Back</a></h3>
+  <table>
+    <tr><td width='150'><b>Username</b></td><td width='150'><b>Password</b></td><td width='150'><b>Email</b></td></tr>
+    <% var i = 0 %>
+    <% while(i < users_list.users.length){ %>
+    <tr>
+      <td><%= users_list.users[i].username %></td>
+      <td><%= users_list.users[i].password %></td>
+      <td><%= users_list.users[i].email %></td>
+    </tr>
+    <% i++ }%>
+  </table>
+</center>
+
+<!-- <%= users_list.users[0].username %>
+<b><%= users_list.users[0].password %></b>
+<%= users_list.users[0].email %> -->
