@@ -1,0 +1,18 @@
+<table border="1">
+  <tr>
+    <td>username</td>
+    <td>password</td>
+    <td>email</td>
+  </tr>
+<% for ( var i = 0; i < data.length; i++) {%>
+  <tr>
+    <td><%= data[i].username %></td>
+    <td><%= data[i].password %></td>
+    <td><%= data[i].email %></td>
+  </tr>
+<%}%>
+</table>
+
+<!-- <script>
+var dataObj = <%= data %>
+</script> -->

@@ -1,3 +1,74 @@
+'use strict'
+
+//require express
+const express = require('express');
+//require path
+const path = require('path');
+
+const fs = require('fs');
+
+//init express
+let app = express();
+
+//setup view engine
+app.set('view engine', 'ejs')
+
+//setup public folder
+app.use(express.static(path.join(__dirname, 'public')))
+
+//routing
+
+app.get('/', function(req, res){
+  res.render('index')
+})
+
+app.get('/users', function(req, res){
+  // let object = {name: 'andini', alamat: 'jalan nakula', umur: '29'}
+  // res.send(`${JSON.stringify(object,null,2)}`)
+  let object = viewUsers();
+  res.render('users', { data: object})
+})
+
+
+app.get('/cities', function(req, res){
+  // let object = {kota: 'denpasar', provinsi: 'bali'}
+  // res.send(`${JSON.stringify(object,null,2)}`)
+  let object = viewCities();
+  res.render('cities', {data: object})
+})
+app.listen(3000)
+
+
+
+
+
+function parseData(file){
+  let object = JSON.parse(fs.readFileSync(file, 'utf8'));
+  return object;
+}
+
+function viewUsers(){
+  let data = parseData('data.json');
+  let arr = [];
+  for(let i = 0 ; i < data.users.length; i++)
+  {
+    arr.push(data.users[i]);
+  }
+
+  return arr;
+}
+
+function viewCities(){
+  let data = parseData('data.json');
+  let arr = [];
+  for(let i = 0 ; i < data.cities.length; i++)
+  {
+    arr.push(data.cities[i]);
+  }
+
+  return arr;
+}
+
 /** EXPRESS FROM SCRATCH V.0
 ---------------------------
 Buatlah sebuah aplikasi sederhana menggunakan Express JS
