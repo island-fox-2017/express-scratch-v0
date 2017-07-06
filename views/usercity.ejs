@@ -1,0 +1,82 @@
+<html>
+
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      table, th, td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <br>
+    <br>
+    <a href="/"> Back to index </a>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table>
+      <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>e-mail</th>
+      </tr>
+
+      <% for (var i = 0; i <= data.users.length - 1; i++) { %>
+        <tr>
+          <td> <%= data.users[i].username %> </td>
+          <td> <%= data.users[i].password %> </td>
+          <td> <%= data.users[i].email %> </td>
+        </tr>
+      <% } %>
+    </table>
+
+    <br>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Province</th>
+      </tr>
+
+      <% for (var i = 0; i <= data.cities.length - 1; i++) { %>
+        <tr>
+          <td> <%= data.cities[i].name %> </td>
+          <td> <%= data.cities[i].province %> </td>
+        </tr>
+      <% } %>
+    </table>
+
+    <br>
+
+    <table>
+      <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>e-mail</th>
+        <th>City</th>
+        <th>Province</th>
+      </tr>
+
+      <% for (var i = 0; i <= data.users.length - 1; i++) { %>
+        <tr>
+          <td> <%= data.users[i].username %> </td>
+          <td> <%= data.users[i].password %> </td>
+          <td> <%= data.users[i].email %> </td>
+          <td> <%= data.cities[i].name %> </td>
+          <td> <%= data.cities[i].province %> </td>
+        </tr>
+      <% } %>
+    </table>
+
+  </body>
+</html>
