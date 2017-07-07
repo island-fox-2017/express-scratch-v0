@@ -1,45 +1,52 @@
-/** EXPRESS FROM SCRATCH V.0
----------------------------
-Buatlah sebuah aplikasi sederhana menggunakan Express JS
+let fs = require('fs');
+let express = require('express');
+let path = require('path');
 
-- Release 0
-Buatlah 3 routing yang memenuhi spesifikasi berikut ini :
+let app = express();
+app.set('view engine', 'ejs');
 
-URL --> http://localhost:3000/
-menampilkan "Welcome to Express My App [Nama_Kalian]"
+app.use(express.static(path.join(__dirname, 'public')));
 
-URL --> http://localhost:3000/users
-menampilkan data users berupa object. di release ini object dibuat manual,
-silakan menentukan property dan value dari object tersebut asalkan relevan dengan user
+/*
+app.get('/', function (req, res) {
+  let name = 'Patrick Benz';
+  res.send(`Welcome to Express My App ${name}`);
+});
 
-URL --> http://localhost:3000/cities
-menampilkan data cities berupa object.
-silakan menentukan property dan value dari object cities juga untuk release 0 ini.
+app.get('/user', function(req, res) {
+  let objSample = { name: "Ronald Ishak", position: "CEO of Hacktiv8" };
+  res.send(`<marquee>${JSON.stringify(objSample,null,2)}</marquee>`);
+});
 
+app.get('/cities', function(req, res) {
+  let objCitySample = {
+    0: { city: "South Wales", population: 2000000 },
+    1: { city: "New South Wales", population: 4000000 },
+    2: { city: "York", population: 5000000},
+    3: { city: "New York", population: 8000000}
+  }
+  res.send(`<marquee>${JSON.stringify(objCitySample,null,2)}</marquee>`);
+});
+*/
 
-- Release 1
-Buatlah file data.json yang isinya ada 2 object yaitu users dan cities.
-contoh :
-{
-  users: [{
-    username: 'hacktiv8',
-    password: 'hacktiv8',
-    email: 'hactiv8@hacktiv8.com'
-  }, {
-    username: 'johndoe',
-    password: '12345',
-    email: 'john@doe.com'
-  }],
-  cities: [{
-    name: 'Jakarta'
-    province: 'DKI Jakarta'
-  }, {
-    name: 'Bandung'
-    province: 'Jawa Barat'
-  }]
-}
+app.get('/', function(req, res) {
+  let myName = "Patrick Benz I."
+  res.render('index', {name: myName});
+});
 
-Setelah itu, buatlah code untuk membaca file dari data.json
-sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
-sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
-**/
+app.get('/user', function(req, res) {
+  let fileSync = fs.readFileSync('data.json', 'utf8');
+  let userObj = JSON.parse(fileSync);
+  userObj = JSON.stringify(userObj.users);
+  res.render('user', {user: userObj});
+});
+
+app.get('/cities', function(req, res) {
+  let myName = "Patrick Benz I."
+  let fileSync = fs.readFileSync('data.json', 'utf8');
+  let citiesObj = JSON.parse(fileSync);
+  citiesObj = JSON.stringify(citiesObj.cities);
+  res.render('cities', {cities: citiesObj, myName: myName});
+});
+
+app.listen(1945);
