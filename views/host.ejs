@@ -9,9 +9,11 @@
   <body>
     <div class="kota">
       <marquee>
-      <br>  <%= "Nama :"+show_users[0].username %> </br>
-      <br>  <%= "Password : " + show_users[0].password %> </br>
-      <br>  <%= "Email : " + show_users[0].email %> </br>
+        <%show_users.forEach(function(isi){ %>
+      <br>  <%= "Nama :"+ isi.username %> </br>
+      <br>  <%= "Password : " + isi.password %> </br>
+      <br>  <%= "Email : " + isi.email %> </br>
+    <% }) %>
     </marquee>
     </div>
   </body>

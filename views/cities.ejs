@@ -9,8 +9,10 @@
   <body>
     <div class="kota">
       <marquee>
-      <br>  <%= "Kota : "+ show_kota[1].name %> </br>
-      <br>  <%= "Provinsi : "+ show_provinsi[1].province %> </br>
+        <%show_kota.forEach(function(isi){ %>
+      <br>  <%= "Kota : "+ isi.name %> </br>
+      <br>  <%= "Provinsi : "+ isi.province %> </br>
+      <% }) %>
     </marquee>
     </div>
   </body>
