@@ -46,19 +46,20 @@ sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ej
 
 // untu require expressnya
 var express = require('express');
-
+var bodyParser = require('body-parser')
 //akses folder project
 var path = require('path');
-
 // cara untuk instantiate
 var app = express()
 
 const fs = require('fs');
-let loadFile =fs.readFileSync('data.json', 'UTF-8')// 
+let loadFile =fs.readFileSync('data.json', 'UTF-8')//
 let readFile = JSON.parse(loadFile);
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');// view engine
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 //untuk setup view engine ejs
 var path_name = path.join(__dirname, 'public');
 var express_static = express.static(path_name);
@@ -100,11 +101,11 @@ app.get('/JSONUser', function(req, res){
   //   password2: JSON.stringify(readFile.users[1].password),
   //   email2: JSON.stringify(readFile.users[1].email)
   // }
-  res.render('JSONUser', {readFile})
+  res.render('JSONUser', {users:readFile.users})
 })
 
 app.get('/JSONcity', function(req, res){
-  res.render('JSONcity', {readFile})
+  res.render('JSONcity', {city:readFile.cities})
 })
 
 app.listen(3000);

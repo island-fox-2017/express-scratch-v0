@@ -10,8 +10,10 @@
   <body>
     <div class="title">
       <h1>Data City of Users</h1>
-      <p>City: <%= JSON.stringify(readFile.cities[0].name) %></p>
-      <p>province: <%= JSON.stringify(readFile.cities[0].province) %></p>
+      <% city.forEach(data =>{%>
+      <p>City: <%= data.name %></p>
+      <p>province: <%= data.province %></p>
+      <% }) %>
     </div>
   </body>
 </html>

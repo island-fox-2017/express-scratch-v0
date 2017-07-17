@@ -9,10 +9,12 @@
 
   <body>
     <div class="title">
+      <% users.forEach(data =>{%>
       <h1>Data User</h1>
-      <p>User Name: <%= JSON.stringify(readFile.users[0].username) %></p>
-      <p>Password: <%= JSON.stringify(readFile.users[0].password) %></p>
-      <p>Email: <%= JSON.stringify(readFile.users[0].email) %></p>
+      <p>User Name: <%= data.username %></p>
+      <p>Password: <%= data.password %></p>
+      <p>Email: <%= data.email %></p>
+      <%})%>
     </div>
   </body>
 </html>
