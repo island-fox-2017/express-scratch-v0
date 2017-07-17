@@ -26,16 +26,17 @@
 
 var express = require('express')
 var path = require('path');
-var fs = require('fs');
-
-var data = fs.readFileSync('data.json')
-let jsonFile = JSON.parse(data); //with path
-// console.log(json);
 var app = express()
+
+var fs = require('fs');
+var data = fs.readFileSync('data.json')
+var jsonFile = JSON.parse(data); //with path
+// console.log(json);
+
 
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(_dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
   res.send('Welcome to Express My App Anggraito')

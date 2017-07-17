@@ -7,6 +7,16 @@
       "username": "johndoe",
       "password": "12345",
       "email": "john@doe.com"
+    },
+    {
+      "username": "lala",
+      "password": "12345",
+      "email": "john@doe.com"
+    },
+    {
+      "username": "pooh",
+      "password": "12345",
+      "email": "john@doe.com"
     }],
     "cities": [{
       "name": "Jakarta",

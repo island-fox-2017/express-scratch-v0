@@ -7,7 +7,14 @@
   </head>
 
   <body>
+    <% show.forEach(shown => {%>
     <ul>
+      <li><%= shown.username%></li>
+      <li><%= shown.password%></li>
+      <li><%= shown.email%></li>
+    </ul>
+    <% }) %>
+    <!-- <ul>
       <li> Username : <%=JSON.stringify(show[0].username)%></li>
       <li> Password : <%=JSON.stringify(show[0].password)%></li>
       <li> Email : <%=JSON.stringify(show[0].email)%></li>
@@ -16,7 +23,7 @@
       <li> Username : <%=JSON.stringify(show[1].username)%> </li>
       <li> Password : <%=JSON.stringify(show[1].password)%></li>
       <li> Email : <%=JSON.stringify(show[1].email)%></li>
-    </ul>
+    </ul> -->
 
   </body>
 </html>
