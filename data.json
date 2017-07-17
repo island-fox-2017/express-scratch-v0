@@ -1,0 +1,19 @@
+{
+  "users": [{
+    "username": "hacktiv8",
+    "password": "PASShacktiv8",
+    "email": "hactiv8@hacktiv8.com"
+  }, {
+    "username": "johndoe",
+    "password": "12345",
+    "email": "john@doe.com"
+  }],
+
+  "cities": [{
+    "name": "Jakarta",
+    "province": "DKI Jakarta"
+  }, {
+    "name": "Bandung",
+    "province": "Jawa Barat"
+  }]
+}

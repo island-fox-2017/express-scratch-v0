@@ -1,0 +1,24 @@
+{
+  "name": "express-scratch-v0",
+  "version": "1.0.0",
+  "description": "--------------------------- Buatlah sebuah aplikasi sederhana menggunakan Express JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/island-fox-2017/express-scratch-v0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/island-fox-2017/express-scratch-v0/issues"
+  },
+  "homepage": "https://github.com/island-fox-2017/express-scratch-v0#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "nodemon": "^1.11.0"
+  }
+}
