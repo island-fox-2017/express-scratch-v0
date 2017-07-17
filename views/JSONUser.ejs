@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ABOUT</title>
+  </head>
+  <link rel="stylesheet" href="/contoh.css">
+  <link rel="stylesheet" href="/sesuatu.css">
+
+  <body>
+    <div class="title">
+      <% users.forEach(data =>{%>
+      <h1>Data User</h1>
+      <p>User Name: <%= data.username %></p>
+      <p>Password: <%= data.password %></p>
+      <p>Email: <%= data.email %></p>
+      <%})%>
+    </div>
+  </body>
+</html>

@@ -43,3 +43,69 @@ Setelah itu, buatlah code untuk membaca file dari data.json
 sehingga routing yang tadinya menampilkan object yang dibuat sendiri,
 sekarang menampilkan data yang ada di-file data.json menggunakan view engine .ejs
 **/
+
+// untu require expressnya
+var express = require('express');
+var bodyParser = require('body-parser')
+//akses folder project
+var path = require('path');
+// cara untuk instantiate
+var app = express()
+
+const fs = require('fs');
+let loadFile =fs.readFileSync('data.json', 'UTF-8')//
+let readFile = JSON.parse(loadFile);
+
+app.set('view engine', 'ejs');// view engine
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+//untuk setup view engine ejs
+var path_name = path.join(__dirname, 'public');
+var express_static = express.static(path_name);
+app.use(express_static);
+
+//untuk routing dengan send
+app.get('/', function(req, res){
+
+  res.send('Welcome To Express My App [Hari Antara]');
+});
+
+// ini dengan object manual
+app.get('/users', function(req, res){
+  var namaUser = "HariAntara";
+  var userEmail = "hariantara.iputu@gmail.com"
+  res.render('users',
+            {
+              username: namaUser,
+              email:userEmail
+                              })
+})
+
+app.get('/cities', function(req, res){
+  var city = "Denpasar"
+  var state = "Bali"
+  res.render("cities",
+            {
+              kota: city,
+              provinsi: state
+            })
+})
+
+app.get('/JSONUser', function(req, res){
+  // var objectUser = {
+  //   userName1: JSON.stringify(readFile.users[0].username),
+  //   password1: JSON.stringify(readFile.users[0].password),
+  //   email1: JSON.stringify(readFile.users[0].email),
+  //   userName2: JSON.stringify(readFile.users[1].username),
+  //   password2: JSON.stringify(readFile.users[1].password),
+  //   email2: JSON.stringify(readFile.users[1].email)
+  // }
+  res.render('JSONUser', {users:readFile.users})
+})
+
+app.get('/JSONcity', function(req, res){
+  res.render('JSONcity', {city:readFile.cities})
+})
+
+app.listen(3000);
